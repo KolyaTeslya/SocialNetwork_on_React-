@@ -4,7 +4,7 @@ import s from './Profile.module.css';
 
 const Profile = (props) => {
   return (
-    <div className={s.content}>
+    <div>
         <div>
           <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/8-sunset-over-water-focusstock.jpg" />
         </div>
