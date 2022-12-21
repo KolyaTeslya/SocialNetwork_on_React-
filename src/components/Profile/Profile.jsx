@@ -1,16 +1,12 @@
 import React from "react";
 import MyPosts from "./MyPosts/MyPosts";
 import s from './Profile.module.css';
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
   return (
     <div>
-        <div>
-          <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/8-sunset-over-water-focusstock.jpg" />
-        </div>
-        <div>
-          ava + description 
-        </div>
+        <ProfileInfo />
         <MyPosts />
       </div>
   );
