@@ -19,3 +19,7 @@
 .messages .message {
     color: white;
 }
+
+.writeMessage {
+    padding: 10px;
+}

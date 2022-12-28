@@ -13,7 +13,6 @@ import {BrowserRouter, Route} from "react-router-dom"
 const App = (props) => {
 
   return (
-    <BrowserRouter>
       <div className="app-wrapper">
         <Header />
         <Navbar />
@@ -29,7 +28,6 @@ const App = (props) => {
           <Route path='/settings' component={Settings} />
         </div>
       </div>
-    </BrowserRouter>
   );
 };
 
