@@ -1,5 +1,5 @@
 import reportWebVitals from "./reportWebVitals";
-import state from "./redux/state";
+import state, { subscribe } from "./redux/state";
 
 
 import React from "react";
@@ -10,7 +10,7 @@ import { addPost, updateNewPostText } from "./redux/state";
 import { BrowserRouter } from "react-router-dom";
 
 
-const root = ReactDOM.createRoot(document.getElementById('root')); // ВОТ ЭТА СТРОКА
+const root = ReactDOM.createRoot(document.getElementById('root')); 
 let rerenderEntireTree = (state) =>{
  
     root.render(
@@ -26,6 +26,8 @@ let rerenderEntireTree = (state) =>{
 
 
 rerenderEntireTree(state);
+
+subscribe(rerenderEntireTree);
 
 
 
