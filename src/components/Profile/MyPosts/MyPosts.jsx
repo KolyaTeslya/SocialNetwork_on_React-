@@ -11,6 +11,7 @@ let postsElements =
   let newPostElement = React.createRef();
 
   let addPost = () => {
+    debugger;
     props.addPost();
 
   }
