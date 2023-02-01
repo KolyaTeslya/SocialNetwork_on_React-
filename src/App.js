@@ -9,6 +9,7 @@ import { Route} from "react-router-dom"
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import LoginPage from "./components/Login/Login";
 
 const App = (props) => {
   return (
@@ -25,6 +26,9 @@ const App = (props) => {
 
           <Route path='/users' 
                  render={ () => <UsersContainer />} />
+
+          <Route path='/login' 
+                 render={ () => <LoginPage />} />
 
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />

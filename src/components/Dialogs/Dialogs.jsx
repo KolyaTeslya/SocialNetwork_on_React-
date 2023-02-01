@@ -17,10 +17,12 @@ const Dialogs = (props) => {
 }
 
 
-let onNewMessageChange = (e) => {
+  let onNewMessageChange = (e) => {
     let body = e.target.value;
     props.updateNewMessageBody(body);
 }
+
+  alert(props.isAuth);
 
   return (
     <div className={s.dialogs}>
