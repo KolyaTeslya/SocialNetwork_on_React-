@@ -4,6 +4,7 @@ import { Field, reduxForm } from "redux-form"
 import { login } from "../../redux/auth-reducer"
 import { required } from "../../utils/validators/validators";
 import { Redirect } from "react-router-dom";
+import style from "./../common/FormsControls/FormsControls.module.css"
 
 
 
@@ -17,6 +18,9 @@ const LoginForm = (props) => {
                     </div>
                     <div>
                         <Field component={"input"} name={"rememberMe"}  type={"checkbox"} />remember me
+                    </div>
+                    <div className={style.formSummaryError}>
+                            ERROR
                     </div>
                     <div>
                         <button>Login</button>
