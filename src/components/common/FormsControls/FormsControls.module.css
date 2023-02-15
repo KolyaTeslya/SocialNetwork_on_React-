@@ -10,7 +10,7 @@
 }
 
 .formSummaryError {
-    border: red 1 px solid;
+    border: red 1px solid;
     padding: 5px;
-    color:rosybrown;
+    color:red;
 }
