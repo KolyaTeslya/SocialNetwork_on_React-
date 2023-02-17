@@ -11,8 +11,8 @@ import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import LoginPage from "./components/Login/Login";
 import { connect } from "react-redux";
-import { getAuthUserData } from "./redux/auth-reducer";
 import { compose } from "redux";
+import { initializeApp } from "./redux/app-reducer";
 
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
     super(props);
   }
   componentDidMount() {
-    this.props.getAuthUserData();
+    this.props.initializeApp();
   }
 
   render() {
@@ -28,17 +28,16 @@ class App extends Component {
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
-          {
-          /* <Route path='/dialogs' component={Dialogs} />
-          <Route path='/profile' component={Profile} /> */
-        }
+          <Route path='/dialogs' 
+                 render={() => <DialogsContainer />} />
+          <Route path='/profile/:userId?' 
+                 render={() => <ProfileContainer />} />
 
-          <Route path='/dialogs' render={() => <DialogsContainer />} />
-          <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+          <Route path='/users' 
+                 render={() => <UsersContainer />} />
 
-          <Route path='/users' render={() => <UsersContainer />} />
-
-          <Route path='/login' render={() => <LoginPage />} />
+          <Route path='/login' 
+                 render={() => <LoginPage />} />
 
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
@@ -51,4 +50,4 @@ class App extends Component {
 
 export default compose(
    withRouter, 
-   connect(null, {getAuthUserData}))(App);
+   connect(null, {initializeApp}))(App);
