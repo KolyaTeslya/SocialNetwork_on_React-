@@ -13,6 +13,7 @@ import LoginPage from "./components/Login/Login";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { initializeApp } from "./redux/app-reducer";
+import Preloader from "./components/common/Preloader/Preloader";
 
 
 class App extends Component {
@@ -24,6 +25,10 @@ class App extends Component {
   }
 
   render() {
+    if (!this.props.initialized) {
+    return <Preloader />
+    }
+
     return (<div className="app-wrapper">
         <HeaderContainer />
         <Navbar />
@@ -45,9 +50,12 @@ class App extends Component {
         </div>
       </div>);
   }
-
 }
+
+const mapStateToProps = (state) => ({
+  initialized: state.app.initialized
+})
 
 export default compose(
    withRouter, 
-   connect(null, {initializeApp}))(App);
+   connect(mapStateToProps, {initializeApp}))(App);
