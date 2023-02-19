@@ -1,4 +1,3 @@
-import React from "react";
 
 export const getUsers1 = (state) => {
     return state.usersPage.users
@@ -21,4 +20,10 @@ export const getIsFetching = (state) => {
 
 export const getFollowingInProgress = (state) => {
     return state.usersPage.followingInProgress
+}
+
+export const counSomethingDifficult = (state) => {
+    //for... math... big arrays
+    let count = 23;
+    return count;
 }
