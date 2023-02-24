@@ -10,21 +10,21 @@ import {
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import { compose } from "redux";
-import { getUsers1, getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress, requireUsers } from "../../redux/users-selectors";
+import { getPageSize, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress, requireUsers } from "../../redux/users-selectors";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.pageSize);
+    const {currentPage, pageSize} = this.props
+    this.props.getUsers(currentPage, pageSize);
   }
 
   onPageChanged = (pageNumber) => {
-
-    this.props.getUsers(pageNumber, this.props.pageSize);
+    const {pageSize} = this.props;
+    this.props.getUsers(pageNumber, pageSize);
 
   };
 
   render() {
-        // console.log('RENDER USER');
     return (
       <>
         {this.props.isFetching ? <Preloader /> : null}
@@ -55,10 +55,8 @@ class UsersContainer extends React.Component {
 // };
 
 let mapStateToProps = (state) => {
-    // console.log('maStateToProps USER');
   return {
     users: requireUsers(state),
-    // users: getUsers1(state),
     pageSize: getPageSize(state),
     totalUsersCount: getTotalUsersCount(state),
     currentPage: getCurrentPage(state),
