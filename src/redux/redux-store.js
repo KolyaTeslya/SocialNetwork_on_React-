@@ -8,8 +8,6 @@ import authReducer from "./auth-reducer";
 import appReducer from './app-reducer';
 const { combineReducers, legacy_createStore, applyMiddleware } = require("redux");
 
-
-
 let reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
