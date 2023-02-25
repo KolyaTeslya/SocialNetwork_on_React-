@@ -6,7 +6,7 @@ import sidebarReducer from "./sidebar-reducer";
 import usersReducer from "./users-reducer";
 import authReducer from "./auth-reducer";
 import appReducer from './app-reducer';
-const { combineReducers, legacy_createStore, applyMiddleware } = require("redux");
+const { combineReducers, createStore, applyMiddleware, compose } = require("redux");
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -18,8 +18,10 @@ let reducers = combineReducers({
     app: appReducer
 });
 
-let store = legacy_createStore(reducers, applyMiddleware(thunkMiddleware));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
-window.store = store; 
+
+window.__store__ = store; 
 
 export default store;
