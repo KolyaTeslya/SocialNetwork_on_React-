@@ -2,6 +2,7 @@ import React from "react";
 import profileReducer, { addPostActionCreator, deletePost } from "./profile-reducer";
 import { ReactDOM } from "react-dom";
 
+
 let state = {
   posts: [
     { id: 1, message: "Hi, how are you?", likesCount: 12 },
