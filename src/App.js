@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, Suspense} from "react";
 import "./App.css";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
@@ -6,14 +6,19 @@ import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import { Route, withRouter} from "react-router-dom"
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import LoginPage from "./components/Login/Login";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import { initializeApp } from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
+
+//import DialogsContainer from "./components/Dialogs/DialogsContainer";
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
+
+
+// import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 class App extends Component {
@@ -34,9 +39,18 @@ class App extends Component {
         <Navbar />
         <div className="app-wrapper-content">
           <Route path='/dialogs' 
-                 render={() => <DialogsContainer />} />
+                 render={() => { 
+                  return  <Suspense fallback={<div>Loading...</div>}>
+                  <DialogsContainer />
+                  </Suspense> 
+                 }} />
+                 
           <Route path='/profile/:userId?' 
-                 render={() => <ProfileContainer />} />
+                 render={() =>{
+                  return <Suspense fallback={<div>Loading...</div>}>
+                  <ProfileContainer /> 
+                  </Suspense> 
+                }} />
 
           <Route path='/users' 
                  render={() => <UsersContainer />} />
