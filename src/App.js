@@ -12,13 +12,12 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { initializeApp } from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
-
+// import ProfileContainer from "./components/Profile/ProfileContainer";
 //import DialogsContainer from "./components/Dialogs/DialogsContainer";
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 
-// import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 class App extends Component {
@@ -40,24 +39,20 @@ class App extends Component {
         <div className="app-wrapper-content">
           <Route path='/dialogs' 
                  render={() => { 
-                  return  <Suspense fallback={<div>Loading...</div>}>
+                  return  <Suspense fallback={<div><Preloader /></div>}>
                   <DialogsContainer />
                   </Suspense> 
                  }} />
-                 
           <Route path='/profile/:userId?' 
                  render={() =>{
-                  return <Suspense fallback={<div>Loading...</div>}>
+                  return <Suspense fallback={<div><Preloader /></div>}>
                   <ProfileContainer /> 
                   </Suspense> 
                 }} />
-
           <Route path='/users' 
                  render={() => <UsersContainer />} />
-
           <Route path='/login' 
                  render={() => <LoginPage />} />
-
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
           <Route path='/settings' component={Settings} />
