@@ -11,7 +11,7 @@ import { Provider } from "react-redux"
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
   root.render(
-    <BrowserRouter basename="/">
+    <BrowserRouter>
       <Provider store={store}>
         <React.StrictMode>
           <App />
